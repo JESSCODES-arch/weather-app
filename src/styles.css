@@ -1,0 +1,75 @@
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background-image: url("https://images.pexels.com/photos/1403550/pexels-photo-1403550.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-image: url("https://images.pexels.com/photos/90633/pexels-photo-90633.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-image: url("https://images.pexels.com/photos/1114690/pexels-photo-1114690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-image: url("https://images.pexels.com/photos/366283/tianjin-twilight-city-scenery-366283.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-image: url("https://images.pexels.com/photos/55787/pexels-photo-55787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+
+  background-size: cover;
+}
+h1 {
+  font-size: 50px;
+}
+h2 {
+  font-size: 20px;
+}
+hr {
+  margin: 20px 60px;
+}
+.weather-app {
+  border: 1px solid gba(0, 0, 0, 0.8);
+  padding: 15px;
+  margin: 80px auto;
+  border-radius: 20px;
+  max-width: 700px;
+  background: rgba(247, 243, 243, 0.35);
+  box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.8);
+}
+
+.searchLine {
+  margin-bottom: 15px;
+}
+.icon {
+  font-size: 70px;
+  position: relative;
+  top: 40px;
+  left: 50px;
+}
+
+.temperature {
+  font-size: 50px;
+  line-height: 1;
+  position: relative;
+  top: 40px;
+}
+.units {
+  position: relative;
+  top: 20px;
+  font-size: 25px;
+}
+.status {
+  padding: 10px;
+  margin: 20px 100px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid gba(0, 0, 0, 0.8);
+  background: rgba(247, 243, 243, 0.35);
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.4);
+  border: black;
+}
+.card-body {
+  text-align: center;
+}
+.card-title {
+  font-size: 20px;
+}
+.card {
+  background: rgba(247, 243, 243, 0.3);
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.4);
+  border: black;
+  border-radius: 10px;
+}
+.form-control {
+  border-radius: 10px;
+}
