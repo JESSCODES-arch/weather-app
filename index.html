@@ -17,187 +17,197 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>The NEW project</title>
+    <title>🌡 Weather App</title>
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <form id="search-form">
-          <span class="searchLine">
-            <div class="row">
-              <div class="col-8">
-                <input
-                  type="search"
-                  placeholder="Choose a city..."
-                  class="form-control shadow-sm p-1.5 mb-3 bg-white rounded"
-                  autofocus="on"
-                  id="chosen-city"
-                />
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form id="search-form">
+            <span class="searchLine">
+              <div class="row">
+                <div class="col-8">
+                  <input
+                    type="search"
+                    placeholder="Choose a city..."
+                    class="form-control shadow-sm p-1.5 mb-3 bg-white rounded"
+                    autofocus="on"
+                    id="chosen-city"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    type="submit"
+                    value="Search"
+                    class="form-control btn btn-primary"
+                    id="submit-city"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    type="submit"
+                    value="Current"
+                    class="form-control btn btn-primary"
+                    id="current-position"
+                  />
+                </div>
               </div>
-              <div class="col-2">
-                <input
-                  type="submit"
-                  value="Search"
-                  class="form-control btn btn-primary"
-                  id="submit-city"
-                />
-              </div>
-              <div class="col-2">
-                <input
-                  type="submit"
-                  value="Current"
-                  class="form-control btn btn-primary"
-                  id="current-position"
-                />
-              </div>
+            </span>
+          </form>
+          <div class="row">
+            <div class="col-3">
+              <p class="icon">🌩</p>
             </div>
-          </span>
-        </form>
-        <div class="row">
-          <div class="col-3">
-            <p class="icon">🌩</p>
+            <div class="col-4">
+              <h1 id="submitted-city"></h1>
+              <h2 class="date" id="now-date"></h2>
+              <h2 class="time" id="now-time"></h2>
+            </div>
+            <div class="col-5">
+              <p>
+                <span class="temperature" id="temperature">10</span>
+                <span class="units">
+                  <a href="#" id="celsius-link">°C</a> |
+                  <a href="#" id="fahrenheit-link">°F</a>
+                </span>
+              </p>
+            </div>
           </div>
-          <div class="col-4">
-            <h1 id="submitted-city"></h1>
-            <h2 class="date" id="now-date"></h2>
-            <h2 class="time" id="now-time"></h2>
-          </div>
-          <div class="col-5">
-            <p>
-              <span class="temperature" id="temperature">10</span>
-              <span class="units">
-                <a href="#" id="celsius-link">°C</a> |
-                <a href="#" id="fahrenheit-link">°F</a>
-              </span>
-            </p>
-          </div>
-        </div>
-        <hr />
-        <p class="status">
-          Today:
-          <br />
-          Stormy currently.<br />
-          The high will be 15 °C.<br />
-          Clear tonight with a low of 8 °C.
-        </p>
+          <hr />
+          <p class="status">
+            Today:
+            <br />
+            Stormy currently.<br />
+            The high will be 15 °C.<br />
+            Clear tonight with a low of 8 °C.
+          </p>
 
-        <hr />
-        <div class="row">
-          <div class="col-2">
-            <div class="card" style="width: 90px">
-              <div class="card-body">
-                <h5 class="card-title">Mon</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Day</h6>
-                <p class="card-text">
-                  ⛅️
-                  <br />
-                  17°C
-                </p>
-                <h6 class="card-subtitle mb-2 text-muted">Night</h6>
-                <p class="card-text">
-                  🌒
-                  <br />
-                  17°C
-                </p>
+          <hr />
+          <div class="row">
+            <div class="col-2">
+              <div class="card" style="width: 90px">
+                <div class="card-body">
+                  <h5 class="card-title">Mon</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Day</h6>
+                  <p class="card-text">
+                    ⛅️
+                    <br />
+                    17°C
+                  </p>
+                  <h6 class="card-subtitle mb-2 text-muted">Night</h6>
+                  <p class="card-text">
+                    🌒
+                    <br />
+                    17°C
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="card" style="width: 90px">
-              <div class="card-body">
-                <h5 class="card-title">Tue</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Day</h6>
-                <p class="card-text">
-                  ⛅️
-                  <br />
-                  17°C
-                </p>
-                <h6 class="card-subtitle mb-2 text-muted">Night</h6>
-                <p class="card-text">
-                  🌓
-                  <br />
-                  17°C
-                </p>
+            <div class="col-2">
+              <div class="card" style="width: 90px">
+                <div class="card-body">
+                  <h5 class="card-title">Tue</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Day</h6>
+                  <p class="card-text">
+                    ⛅️
+                    <br />
+                    17°C
+                  </p>
+                  <h6 class="card-subtitle mb-2 text-muted">Night</h6>
+                  <p class="card-text">
+                    🌓
+                    <br />
+                    17°C
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="card" style="width: 90px">
-              <div class="card-body">
-                <h5 class="card-title">Wed</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Day</h6>
-                <p class="card-text">
-                  ⛅️
-                  <br />
-                  17°C
-                </p>
-                <h6 class="card-subtitle mb-2 text-muted">Night</h6>
-                <p class="card-text">
-                  🌔
-                  <br />
-                  17°C
-                </p>
+            <div class="col-2">
+              <div class="card" style="width: 90px">
+                <div class="card-body">
+                  <h5 class="card-title">Wed</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Day</h6>
+                  <p class="card-text">
+                    ⛅️
+                    <br />
+                    17°C
+                  </p>
+                  <h6 class="card-subtitle mb-2 text-muted">Night</h6>
+                  <p class="card-text">
+                    🌔
+                    <br />
+                    17°C
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="card" style="width: 90px">
-              <div class="card-body">
-                <h5 class="card-title">Thu</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Day</h6>
-                <p class="card-text">
-                  ⛅️
-                  <br />
-                  17°C
-                </p>
-                <h6 class="card-subtitle mb-2 text-muted">Night</h6>
-                <p class="card-text">
-                  🌕
-                  <br />
-                  17°C
-                </p>
+            <div class="col-2">
+              <div class="card" style="width: 90px">
+                <div class="card-body">
+                  <h5 class="card-title">Thu</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Day</h6>
+                  <p class="card-text">
+                    ⛅️
+                    <br />
+                    17°C
+                  </p>
+                  <h6 class="card-subtitle mb-2 text-muted">Night</h6>
+                  <p class="card-text">
+                    🌕
+                    <br />
+                    17°C
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="card" style="width: 90px">
-              <div class="card-body">
-                <h5 class="card-title">Fri</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Day</h6>
-                <p class="card-text">
-                  ⛅️
-                  <br />
-                  17°C
-                </p>
-                <h6 class="card-subtitle mb-2 text-muted">Night</h6>
-                <p class="card-text">
-                  🌖
-                  <br />
-                  17°C
-                </p>
+            <div class="col-2">
+              <div class="card" style="width: 90px">
+                <div class="card-body">
+                  <h5 class="card-title">Fri</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Day</h6>
+                  <p class="card-text">
+                    ⛅️
+                    <br />
+                    17°C
+                  </p>
+                  <h6 class="card-subtitle mb-2 text-muted">Night</h6>
+                  <p class="card-text">
+                    🌖
+                    <br />
+                    17°C
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="card" style="width: 90px">
-              <div class="card-body">
-                <h5 class="card-title">Sat</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Day</h6>
-                <p class="card-text">
-                  ⛅️
-                  <br />
-                  17°C
-                </p>
-                <h6 class="card-subtitle mb-2 text-muted">Night</h6>
-                <p class="card-text">
-                  🌖
-                  <br />
-                  17°C
-                </p>
+            <div class="col-2">
+              <div class="card" style="width: 90px">
+                <div class="card-body">
+                  <h5 class="card-title">Sat</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Day</h6>
+                  <p class="card-text">
+                    ⛅️
+                    <br />
+                    17°C
+                  </p>
+                  <h6 class="card-subtitle mb-2 text-muted">Night</h6>
+                  <p class="card-text">
+                    🌖
+                    <br />
+                    17°C
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <small>
+          <a
+            href="https://github.com/JESSCODES-arch/weather-app"
+            target="_blank"
+            >Open-source code</a
+          >
+          by JESS Mende
+        </small>
       </div>
     </div>
     <script src="src/index.js"></script>
