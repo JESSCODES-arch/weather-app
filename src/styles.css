@@ -66,8 +66,11 @@ hr {
 .card-body {
   text-align: center;
 }
-.card-title {
-  font-size: 20px;
+.forecast-times {
+  font-size: 15px;
+}
+.forecast-low-high {
+  font-size: 13px;
 }
 .card {
   background: rgba(247, 243, 243, 0.3);
