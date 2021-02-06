@@ -13,6 +13,7 @@ function getDate(date) {
   let day = days[dayIndex];
   let months = [
     "January",
+    "February",
     "March",
     "April",
     "May",
@@ -27,8 +28,18 @@ function getDate(date) {
   let month = months[date.getMonth()];
 
   let number = date.getDate();
-
-  return `${day}, ${month} ${number}`;
+  //let number = 21;
+  if (number === 1 && 21 && 31) {
+    return `${day}, ${month} ${number}st`;
+  }
+  if (number === 2 && 22) {
+    return `${day}, ${month} ${number}nd`;
+  }
+  if (number === 3 && 23) {
+    return `${day}, ${month} ${number}rd`;
+  } else {
+    return `${day}, ${month} ${number}th`;
+  }
 }
 //Get current time
 function getTime(time) {
@@ -83,6 +94,10 @@ function displayWeatherCondition(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
+  console.log(response.data);
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
 }
 function receiveCity(event) {
   event.preventDefault();
@@ -115,6 +130,9 @@ celsiusLink.addEventListener("click", convertToCelsius);
 let buttonCurrent = document.querySelector("#current-position");
 buttonCurrent.addEventListener("click", getPosition);
 
+//showTemperature("Bonn");
 //Get temperature of submitted City
 let chosenCity = document.querySelector("#search-form");
 chosenCity.addEventListener("submit", receiveCity);
+
+receiveCity = "Bonn";
