@@ -27,15 +27,15 @@ function getDate(date) {
   ];
   let month = months[date.getMonth()];
 
-  let number = date.getDate();
-  //let number = 21;
-  if (number === 1 && 21 && 31) {
+  //let number = date.getDate();
+  let number = 22;
+  if (number === 1 || number === 21 || number === 31) {
     return `${day}, ${month} ${number}st`;
   }
-  if (number === 2 && 22) {
+  if (number === 2 || number === 22) {
     return `${day}, ${month} ${number}nd`;
   }
-  if (number === 3 && 23) {
+  if (number === 3 || number === 23) {
     return `${day}, ${month} ${number}rd`;
   } else {
     return `${day}, ${month} ${number}th`;
