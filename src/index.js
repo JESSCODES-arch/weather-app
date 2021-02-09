@@ -122,15 +122,27 @@ function displayWeatherCondition(response) {
   );
   icon.setAttribute("alt", response.data.weather[0].icon);
 }
+//function receiveCity(event) {
+//event.preventDefault();
+//let apiKey = "2d89424c30d32683710090e6c247a224";
+//let city = document.querySelector("#chosen-city").value;
+//let units = "metric";
+//let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
+//axios.get(apiUrl).then(displayWeatherCondition);
+//}
 function receiveCity(event) {
   event.preventDefault();
-  let apiKey = "2d89424c30d32683710090e6c247a224";
   let city = document.querySelector("#chosen-city").value;
+  searchCity(city);
+}
+function searchCity(city) {
+  let apiKey = "2d89424c30d32683710090e6c247a224";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
   axios.get(apiUrl).then(displayWeatherCondition);
 }
+searchCity("Paris");
 
 //Get current weekday and date
 let currentTime = new Date();
