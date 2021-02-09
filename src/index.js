@@ -90,14 +90,20 @@ function getPosition(position) {
 }
 //Get temperature of submitted City
 function displayWeatherCondition(response) {
+  console.log(response.data);
   document.querySelector("#submitted-city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  console.log(response.data);
+
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
-  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
+  document.querySelector("#wind-speed").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#humidity").innerHTML = Math.round(
+    response.data.main.humidity
+  );
 }
 function receiveCity(event) {
   event.preventDefault();
