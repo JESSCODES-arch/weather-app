@@ -73,6 +73,20 @@ function showTemperature(response) {
   let messageCity = document.querySelector("#submitted-city");
   messageTemperature.innerHTML = `${temperature}`;
   messageCity.innerHTML = `${city}`;
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#wind-speed").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#humidity").innerHTML = Math.round(
+    response.data.main.humidity
+  );
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].icon);
 }
 function showPosition(position) {
   let latitude = position.coords.latitude;
@@ -88,7 +102,6 @@ function getPosition(position) {
 }
 //Get temperature of submitted City
 function displayWeatherCondition(response) {
-  console.log(response.data);
   document.querySelector("#submitted-city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
