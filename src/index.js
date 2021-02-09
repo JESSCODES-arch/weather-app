@@ -26,9 +26,7 @@ function getDate(date) {
     "December",
   ];
   let month = months[date.getMonth()];
-
-  //let number = date.getDate();
-  let number = 22;
+  let number = date.getDate();
   if (number === 1 || number === 21 || number === 31) {
     return `${day}, ${month} ${number}st`;
   }
@@ -104,6 +102,12 @@ function displayWeatherCondition(response) {
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.main.humidity
   );
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].icon);
 }
 function receiveCity(event) {
   event.preventDefault();
@@ -140,5 +144,3 @@ buttonCurrent.addEventListener("click", getPosition);
 //Get temperature of submitted City
 let chosenCity = document.querySelector("#search-form");
 chosenCity.addEventListener("submit", receiveCity);
-
-receiveCity = "Bonn";
