@@ -59,11 +59,19 @@ li::first-letter {
   position: relative;
   top: 40px;
 }
+
 .units {
   position: relative;
   top: 8px;
   font-size: 25px;
+  left: 8px;
 }
+.weather-display .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
 .status {
   padding: 10px;
   margin: 5px 5px;

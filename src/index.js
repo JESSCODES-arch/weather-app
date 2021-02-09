@@ -1,3 +1,4 @@
+//Function variables:
 //Get current weekday and date
 function getDate(date) {
   let dayIndex = date.getDay();
@@ -51,21 +52,8 @@ function getTime(time) {
   }
   return `${hour}:${minute} h`;
 }
-//Fahrenheit Link
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
-}
-//Celsius Link
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 10;
-}
-//Current Location + temperature - Function in function in function (3*)
+
+//Current Location + temperature
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let city = response.data.name;
@@ -87,6 +75,7 @@ function showTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].icon);
+  celsiusTemperatur = response.data.main.temp;
 }
 function showPosition(position) {
   let latitude = position.coords.latitude;
@@ -106,7 +95,6 @@ function displayWeatherCondition(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#wind-speed").innerHTML = Math.round(
@@ -121,16 +109,26 @@ function displayWeatherCondition(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].icon);
+  celsiusTemperature = response.data.main.temp;
 }
-//function receiveCity(event) {
-//event.preventDefault();
-//let apiKey = "2d89424c30d32683710090e6c247a224";
-//let city = document.querySelector("#chosen-city").value;
-//let units = "metric";
-//let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
-//axios.get(apiUrl).then(displayWeatherCondition);
-//}
+//Fahrenheit Link
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+//Celsius Link
+function convertToCelsius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+//API call for default city and city input
 function receiveCity(event) {
   event.preventDefault();
   let city = document.querySelector("#chosen-city").value;
@@ -142,8 +140,7 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
-searchCity("Paris");
-
+//Global variables:
 //Get current weekday and date
 let currentTime = new Date();
 let nowDate = document.querySelector("#now-date");
@@ -153,6 +150,14 @@ nowDate.innerHTML = getDate(currentTime);
 let nowTime = document.querySelector("#now-time");
 nowTime.innerHTML = getTime(currentTime);
 
+//Current Location + temperature - Function in function in function (3*)
+let buttonCurrent = document.querySelector("#current-position");
+buttonCurrent.addEventListener("click", getPosition);
+
+//Get temperature of submitted City
+let chosenCity = document.querySelector("#search-form");
+chosenCity.addEventListener("submit", receiveCity);
+
 //Fahrenheit Link
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
@@ -161,11 +166,7 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
-//Current Location + temperature - Function in function in function (3*)
-let buttonCurrent = document.querySelector("#current-position");
-buttonCurrent.addEventListener("click", getPosition);
+let celsiusTemperature = null;
 
-//showTemperature("Bonn");
-//Get temperature of submitted City
-let chosenCity = document.querySelector("#search-form");
-chosenCity.addEventListener("submit", receiveCity);
+//Default city
+searchCity("tobermore");
