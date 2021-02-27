@@ -87,10 +87,24 @@ li::first-letter {
   text-align: center;
 }
 .forecast-times {
-  font-size: 15px;
+  font-size: 17px;
+  position: relative;
+  top: 10px;
+}
+.forecast-range {
+  font-size: 13px;
+  position: relative;
+  top: -20px;
 }
 .forecast-low-high {
-  font-size: 13px;
+  font-size: 15px;
+  position: relative;
+  top: -20px;
+}
+.forecast-icon {
+  position: relative;
+  top: -10px;
+  left: -20px;
 }
 .card {
   background: rgba(247, 243, 243, 0.3);

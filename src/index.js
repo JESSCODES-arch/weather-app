@@ -52,6 +52,19 @@ function getTime(time) {
   }
   return `${hour}:${minute} h`;
 }
+//Get forecast time
+function formatHours(timestamp) {
+  let currentTime = new Date(timestamp);
+  let hour = currentTime.getHours();
+  let minute = currentTime.getMinutes();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  if (minute < 10) {
+    minute = `0${minute}`;
+    return `${hour}:${minute}`;
+  }
+}
 
 //Current Location + temperature
 function showTemperature(response) {
@@ -134,11 +147,43 @@ function receiveCity(event) {
   let city = document.querySelector("#chosen-city").value;
   searchCity(city);
 }
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+  for (let index = 0; index < 12; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+            <div class="col-2">
+              <div class="card" style="width: 90px">
+                <div class="card-body">
+                  <div class="forecast-times">${formatHours(
+                    forecast.dt * 1000
+                  )}</div>
+                  <img src="https://openweathermap.org/img/wn/${
+                    forecast.weather[0].icon
+                  }@2x.png" class="forecast-icon" />
+                  <div class="forecast-range">Low:</div>
+                  <div class="forecast-low-high" id="forecast-low">${Math.round(
+                    forecast.main.temp_min
+                  )}°C</div>
+                  <div class="forecast-range">High:</div>
+                  <div class="forecast-low-high" id="forecast-high">${Math.round(
+                    forecast.main.temp_max
+                  )}°C</div>
+                </div>
+              </div>
+            </div>`;
+  }
+}
 function searchCity(city) {
   let apiKey = "2d89424c30d32683710090e6c247a224";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeatherCondition);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 //Global variables:
 //Get current weekday and date
