@@ -1,4 +1,16 @@
 //Function variables:
+//Change background depending on weather for future references
+//function changeBackground(weather) {
+//if (iconBackground === "01d") {
+//document.body.style.backgroundImage = url(
+//"https://images.pexels.com/photos/55787/pexels-photo-55787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+//);
+//} else {
+//document.body.style.backgroundImage = url(
+//"https://images.pexels.com/photos/55787/pexels-photo-55787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+//);
+//}
+//}
 //Get current weekday and date
 function getDate(date) {
   let dayIndex = date.getDay();
@@ -65,7 +77,6 @@ function formatHours(timestamp) {
     return `${hour}:${minute}`;
   }
 }
-
 //Current Location + temperature
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -149,11 +160,12 @@ function receiveCity(event) {
   let city = document.querySelector("#chosen-city").value;
   searchCity(city);
 }
+//Forecast
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
-  for (let index = 0; index < 12; index++) {
+  for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
             <div class="col-2">
@@ -214,6 +226,10 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 let celsiusTemperature = null;
+
+//Background
+//let iconBackground = document.querySelector("#icon");
+//iconBackground.addEventListener("submit", changeBackground);
 
 //Default city
 searchCity("tobermore");

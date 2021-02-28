@@ -1,10 +1,11 @@
 body {
   font-family: "Noto Sans JP", sans-serif;
+  background-image: url("https://images.pexels.com/photos/1403550/pexels-photo-1403550.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-image: url("https://images.pexels.com/photos/90633/pexels-photo-90633.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-image: url("https://images.pexels.com/photos/1114690/pexels-photo-1114690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-image: url("https://images.pexels.com/photos/366283/tianjin-twilight-city-scenery-366283.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
   background-image: url("https://images.pexels.com/photos/55787/pexels-photo-55787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-image: url("https://images.pexels.com/photos/1403550/pexels-photo-1403550.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-image: url("https://images.unsplash.com/photo-1584267385494-9fdd9a71ad75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
 
   background-size: cover;
 }
